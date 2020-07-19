@@ -1,33 +1,7 @@
 /* eslint-disable no-unused-vars */
 import {Button, Popconfirm, Icon} from 'ant-design-vue';
+import {getButtonProps, getPopconfirmProps, getIconProps} from '../utils/components-props';
 import {classPrefix} from '../utils/const';
-import {getPropsFromField} from '../utils/fieldProps';
-// doc: https://antdv.com/components/input-cn/#Input
-const buttonPropsKeys = [
-    'disabled',
-    'ghost',
-    'htmlType',
-    'icon',
-    // 'loading',
-    'shape',
-    'size',
-    'type',
-    'block'
-];
-
-const popconfirmPropsKeys = [
-    'cancelText',
-    'okText',
-    'okType',
-    'title',
-    'icon',
-    'disabled'
-];
-
-const iconPropsKeys = [
-
-];
-
 const FieldButton = {
     inject: ['FormContext'],
     props: {
@@ -85,58 +59,47 @@ const FieldButton = {
         handelCancel() {
             this.$emit('on-button-cancel', this);
         },
-        getButtonProps(field) {
-            const props = getPropsFromField(buttonPropsKeys, field);
-            props.loading = this.loading;
-            return props;
-        },
-        getPopconfirmProps(field) {
-            return getPropsFromField(popconfirmPropsKeys, field);
-        },
-        getIconProps(field) {
-            return getPropsFromField(iconPropsKeys, field);
-        }
     },
     render(h) {
-        const buttonProps = {
-            props: this.getButtonProps(this.field)
-        };
-
         const confirmPoptipConfig = this.field.confirmPoptip || {};
-        const popconfirmProps = {
-            props: this.getPopconfirmProps(confirmPoptipConfig),
+        const hasPopconfirm = Object.keys(confirmPoptipConfig).length > 0;
+
+        const confirmPoptipIconConfig = confirmPoptipConfig.icon || {};
+        const hasConfirmPopIcon = Object.keys(confirmPoptipIconConfig).length > 0;
+        const confirmPoptipIconProps = getIconProps(confirmPoptipIconConfig);
+
+        // Button
+        const buttonProps = getButtonProps(this.field, {
+            props: {
+                loading: this.loading,
+                text: this.text
+            },
+            on: hasPopconfirm ? {} : {click: this.handleClick}
+        });
+
+        const ButtonVNode = <Button {...buttonProps}>{buttonProps.props.text}</Button>;
+
+        // Popconfirm
+        const popconfirmProps = getPopconfirmProps(confirmPoptipConfig, {
+            props: {
+                icon: <Icon {...confirmPoptipIconProps}></Icon>
+            },
             on: {
                 confirm: this.handleClick,
                 cancel: this.handelCancel
             }
-        };
-
-        const hasPopconfirm = Object.keys(popconfirmProps.props).length > 0;
-
-
-        const popconfirmIconConfig = this.field.confirmPoptip && this.field.confirmPoptip.icon || {};
-        const popconfirmIconProps = {
-            props: this.getIconProps(popconfirmIconConfig)
-        };
-
-        const hasPopconfirmIcon = Object.keys(popconfirmIconProps.props).length > 0;
-
-        return (
-            hasPopconfirm
-                ?
-                <Popconfirm {...popconfirmProps}>
-                    {hasPopconfirmIcon && <Icon {...popconfirmIconProps}/>}
-                    <Button {...buttonProps}>{this.text}</Button>
-                </Popconfirm>
-                :
-                <Button
-                    {...buttonProps}
-                    onClick={this.handleClick}
-                >{this.text}</Button>
-        );
+        });
+        return hasPopconfirm
+            ?
+            <Popconfirm {...popconfirmProps}>
+                {ButtonVNode}
+            </Popconfirm>
+            :
+            ButtonVNode;
     }
 };
 
+// Event exposed to FieldGenerator and FormGenerator
 FieldButton.emiters = {
     /**
      * 子组件value变更时触发

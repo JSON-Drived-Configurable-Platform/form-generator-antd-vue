@@ -4,7 +4,7 @@
             <h1>FieldGenerator</h1>
             <p>
                 用来生成一个特定的表单控件。<strong>通过 field.type 指定组件的类型。</strong>常用于解决在其他结构(如表格)中嵌入表单控件。关于支持的组件类型可以参考<router-link to="/intro#SJGL">简介中的设计概览</router-link>。
-                <strong>在使用时，需要配合 iView Form组件一起使用。</strong>
+                <strong>在使用时，需要配合 ant-design-vue FormModel组件一起使用。</strong>
             </p>
             <alert>
                 文档中在针对单个控件讲解时，都会使用这个组件来生成。
@@ -126,7 +126,7 @@
                         </tr>
                         <tr>
                             <td>field.labelTip</td>
-                            <td>展示额外提示信息，{content: '展示信息', placement: '气泡方向'}, labelTip.content 为展示信息，<strong>如果Content内容为html，可能会导致XSS攻击</strong>，完整配置可参：<a href="https://www.iviewui.com/components/tooltip">Tooltip 文字提示</a></td>
+                            <td>展示额外提示信息，{content: '展示信息', placement: '气泡方向'}, labelTip.content 为展示信息，<strong>如果Content内容为html，可能会导致XSS攻击</strong>，完整配置可参：<a href="https://antdv.com/components/popconfirm-cn/">Tooltip 文字提示</a></td>
                             <td>Object</td>
                             <td>{}</td>
                         </tr>
@@ -190,7 +190,6 @@
                             <td>List</td>
                             <td>见 <router-link to="/doc/List">List</router-link></td>
                         </tr>
-
                     </tbody>
                 </table>
             </div>
@@ -234,9 +233,9 @@ export default {
     },
 
     methods: {
-        handleFieldChange(model, value) {
+        handleFieldChange($event) {
             // eslint-disable-next-line no-console
-            console.log(model, value);
+            console.log($event);
         }
     }
 };

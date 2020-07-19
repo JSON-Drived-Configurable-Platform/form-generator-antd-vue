@@ -7,13 +7,13 @@
                 <!-- <div class="page-home-container-content-slogon">同样的场景，我们只写一次</div> -->
                 <div class="page-home-container-content-desc">
                     <p>
-                        <!-- JSON Drived Configurable Form Generator based on iView -->
+                        <!-- JSON Drived Configurable Form Generator based on AntdVue -->
                         基于ant-design-vue的JSON驱动的可配置表单生成工具
                     </p>
                 </div>
                 <div class="page-home-container-content-actions">
                     <Button type="primary" size="large" shape="circle">
-                        <router-link :style="{color: '#f8f8f8'}" to="/doc">快速开始</router-link>
+                        <router-link :style="{color: '#f8f8f8'}" to="/core-components">快速开始</router-link>
                     </Button>
                     <Button type="primary" size="large" shape="circle">
                         <router-link :style="{color: '#f8f8f8'}" to="/group-form">预览</router-link>
@@ -52,7 +52,7 @@ export default {
     width: 100%;
     height: 100%;
     background: url('./assets/cool-background.svg') no-repeat;
-    background-size: contain;
+    background-size: cover;
     font-family: Avenir,-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Helvetica Neue',Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol',sans-serif;
 
     .ivu-layout-header {

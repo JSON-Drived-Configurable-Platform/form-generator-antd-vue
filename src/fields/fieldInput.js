@@ -1,20 +1,11 @@
 /* eslint-disable no-unused-vars */
-import {Input} from 'ant-design-vue';
-import {getPropsFromField} from '../utils/fieldProps';
+import {Input, Icon} from 'ant-design-vue';
+import {getInputProps, getIconProps} from '../utils/components-props';
 import {fieldChange} from '../utils/common-emiters';
+import { isArray } from 'core-js/fn/array';
+import { isObject } from 'core-js/fn/object';
 
-
-// doc: https://antdv.com/components/input-cn/#Input
-const fieldPropsKeys = [
-    'placeholder',
-    'allowClear',
-    'disabled',
-    'maxLength',
-    'prefix',
-    'suffix',
-    'size'
-];
-
+const {TextArea, Password} = Input;
 const FiledInput = {
     props: {
         value: {
@@ -39,25 +30,45 @@ const FiledInput = {
                 field: this.field
             });
         },
-        getProps(field) {
-            return getPropsFromField(fieldPropsKeys, field);
-        }
     },
     render(h) {
-        const props = {
-            props: this.getProps(this.field)
-        };
-        return (
-            <Input
-                {...props}
-                value={this.value}
-                onChange={this.handleChange}
-            >
-            </Input>
-        );
+        const prefix = this.field.prefix;
+        const prefixProps = isObject(prefix) ? getIconProps(prefix) : prefix;
+
+        const suffix = this.field.suffix;
+        const suffixProps = isObject(suffix) ? getIconProps(suffix) : suffix;
+
+        const addonBefore = this.field.addonBefore;
+        const addonBeforeProps = isObject(addonBefore) ? getIconProps(addonBefore) : addonBefore;
+
+        const addonAfter = this.field.addonAfter;
+        const addonAfterProps = isObject(addonAfter) ? getIconProps(addonAfter) : addonAfter;
+
+        const inputProps = getInputProps(this.field, {
+            props: {
+                value: this.value,
+                prefix: isObject(prefixProps) ? <Icon  {...prefixProps} /> : prefixProps,
+                suffix: isObject(suffixProps) ? <Icon  {...suffixProps} /> : suffixProps,
+                addonBefore: isObject(addonBeforeProps) ? <Icon  {...addonBeforeProps} /> : addonBeforeProps,
+                addonAfter: isObject(addonAfterProps) ? <Icon  {...addonAfterProps} /> : addonAfterProps,
+            },
+            on: {
+                change: this.handleChange
+            }
+        });
+
+        switch (this.field.subtype) {
+            case 'textArea':
+                return <TextArea {...inputProps}/>;
+            case 'password':
+                return <Password {...inputProps}/>;
+            default:
+                return <Input {...inputProps}/>;
+        }
     }
 };
 
+// Event exposed to FieldGenerator and FormGenerator
 FiledInput.emiters = {
     fieldChange
 };

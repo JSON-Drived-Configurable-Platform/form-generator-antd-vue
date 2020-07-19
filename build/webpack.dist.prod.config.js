@@ -18,8 +18,8 @@ module.exports = merge(webpackBaseConfig, {
     output: {
         path: path.resolve(__dirname, '../dist'),
         publicPath: '/dist/',
-        filename: 'form-generator-iview.min.js',
-        library: 'FormGeneratorIView',
+        filename: 'form-generator-antd-vue.min.js',
+        library: 'FormGeneratorAntdVue',
         libraryTarget: 'umd',
         umdNamedDefine: true
     },
@@ -30,11 +30,11 @@ module.exports = merge(webpackBaseConfig, {
             commonjs2: 'vue',
             amd: 'vue'
         },
-        iview: {
-            root: 'iView',
-            commonjs: 'iview',
-            commonjs2: 'iview',
-            amd: 'iview'
+        'ant-design-vue': {
+            root: 'ant-design-vue',
+            commonjs: 'ant-design-vue',
+            commonjs2: 'ant-design-vue',
+            amd: 'ant-design-vue'
         }
     }
 });

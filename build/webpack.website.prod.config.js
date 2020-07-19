@@ -60,6 +60,11 @@ module.exports = merge(webpackBaseConfig, {
                     name: 'iview',
                     chunks: 'all'
                 },
+                'ant-design-vue': {
+                    test: /[\\/]node_modules[\\/]ant-design-vue/,
+                    name: 'ant-design-vue',
+                    chunks: 'all'
+                },
                 vendors: {
                     test: /[\\/]node_modules[\\/]/,
                     priority: -10

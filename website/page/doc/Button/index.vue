@@ -3,7 +3,13 @@
         <article>
             <h1>Button</h1>
             <inAnchor title="概述" h2 />
-            <p>基础组件-按钮。主要用于在配置表单中一些额外的交互操作。</p>
+            <p>基础组件-按钮。主要用于在配置表单中一些额外的事件触发等操作。主要用于一下几个场景：</p>
+            <ul>
+                <li>（1）、触发button-event事件：button-event事件可以通过FieldGenerator或者FormGenerator接受；</li>
+                <li>（2）、跳转：支持url和route两种配置方式；</li>
+                <li>（3）、触发ajax请求：通过配置，内部执行ajax请求操作，无论请求是否成功，最终都会触发button-event事件；</li>
+            </ul>
+            <p>按钮的特性在实现增删改查类型的列表操作时非常有用，详见：TODO</p>
             <div class="api">
                 <inAnchor title="配置快速查询" h2 />
                 <inAnchor title="核心配置" h3 />

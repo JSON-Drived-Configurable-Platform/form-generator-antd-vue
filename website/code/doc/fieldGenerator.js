@@ -39,11 +39,11 @@ export default {
 };
 </script>
 <template>
-    <Form :model="model">
+    <a-form-model :model="model">
         <FieldGenerator
             :field="field"
         />
-    </Form>
+    </a-form-model>
 </template>
 `;
 

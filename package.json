@@ -1,10 +1,10 @@
 {
-    "name": "form-generator-iview",
+    "name": "form-generator-antd-vue",
     "version": "1.0.0-beta",
-    "title": "formGeneratorIView",
-    "description": "A form generator with json schema based on iview ui",
+    "title": "formGeneratorAntdVue",
+    "description": "A form generator with json schema based on ant-design-vue",
     "keywords": [
-        "iview",
+        "ant-design-vue",
         "vue",
         "vue.js",
         "component",
@@ -12,7 +12,7 @@
         "ui",
         "framework",
         "form-generator",
-        "form-generator-iview"
+        "form-generator-antd-vue"
     ],
     "main": "src/index.js",
     "files": [
@@ -28,12 +28,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/JSON-Drived-Configurable-Platform/form-generator-iview"
+        "url": "https://github.com/JSON-Drived-Configurable-Platform/form-generator-antd-vue"
     },
     "author": "abingblog@gmail.com, changyuqing_@outlook.com, Tobin1990",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/JSON-Drived-Configurable-Platform/form-generator-iview"
+        "url": "https://github.com/JSON-Drived-Configurable-Platform/form-generator-antd-vue"
     },
     "peerDependencies": {
         "ant-design-vue": "^1.6.3",

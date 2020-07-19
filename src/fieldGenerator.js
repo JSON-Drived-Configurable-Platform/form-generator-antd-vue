@@ -274,7 +274,6 @@ export default {
                     emiter(this, $event);
                 };
             });
-            console.log('listeners', listeners);
             return listeners;
         }
     },
@@ -283,7 +282,6 @@ export default {
         const Component = fieldComponents[`field${this.computedField.type}`];
         // modelIdentifier
         const modelIdentifier = this.computedField.model;
-        console.log('modelIdentifier-value', modelIdentifier, value);
         const value = this.FormContext.model[modelIdentifier];
 
         const formItemProps = {

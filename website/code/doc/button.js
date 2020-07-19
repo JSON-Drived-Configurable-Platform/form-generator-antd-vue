@@ -61,12 +61,12 @@ export default {
 };
 </script>
 <template>
-    <Form :model="model">
+    <a-form-model :model="model">
         <FieldGenerator
             :field="field"
             @on-field-change="handleFieldChange"
         />
-    </Form>
+    </a-form-model>
 </template>
 `;
 
@@ -106,12 +106,12 @@ export default {
 };
 </script>
 <template>
-    <Form :model="model">
+    <a-form-model :model="model">
         <FieldGenerator
             :field="field"
             @on-field-change="handleFieldChange"
         />
-    </Form>
+    </a-form-model>
 </template>
 `;
 
@@ -152,12 +152,12 @@ export default {
 };
 </script>
 <template>
-    <Form :model="model">
+    <a-form-model :model="model">
         <FieldGenerator
             :field="field"
             @on-field-change="handleFieldChange"
         />
-    </Form>
+    </a-form-model>
 </template>
 `;
 
@@ -167,7 +167,7 @@ let ajax = {};
 const ajaxField = {
     type: 'Button',
     text: '删除',
-    subtype: 'error',
+    subtype: 'danger',
     action: {
         type: 'ajax',
         api: '/curdDelete',
@@ -200,12 +200,12 @@ export default {
 };
 </script>
 <template>
-    <Form :model="model">
+    <a-form-model :model="model">
         <FieldGenerator
             :field="field"
             @on-field-change="handleFieldChange"
         />
-    </Form>
+    </a-form-model>
 </template>
 `;
 
@@ -217,7 +217,7 @@ const textModelField = {
     type: 'Button',
     model: 'detailUrl',
     textModel: 'name',
-    subtype: 'text',
+    subtype: 'link',
     action: {
         type: 'url',
     },
@@ -247,12 +247,12 @@ export default {
 };
 </script>
 <template>
-    <Form :model="model">
+    <a-form-model :model="model">
         <FieldGenerator
             :field="field"
             @on-field-change="handleFieldChange"
         />
-    </Form>
+    </a-form-model>
 </template>
 `;
 
@@ -263,11 +263,14 @@ const confirmField = {
         title: '确定删除?',
         placement: 'right',
         cancelText: '取消',
-        okText: '确认'
+        okText: '确认',
+        icon: {
+            type: 'warning'
+        }
     },
     type: 'Button',
     text: '删除',
-    subtype: 'error',
+    subtype: 'danger',
     action: {
         type: 'ajax',
         api: '/curdDelete',
@@ -301,13 +304,13 @@ export default {
 };
 </script>
 <template>
-    <Form :model="model">
+    <a-form-model :model="model">
         <FieldGenerator
             :field="field"
             @on-field-change="handleFieldChange",
             @on-button-cancel="handleButtonCancel"
         />
-    </Form>
+    </a-form-model>
 </template>
 `;
 

@@ -1,4 +1,4 @@
-// 简单示例
+// simple
 let simple = {};
 
 const field = {
@@ -7,7 +7,7 @@ const field = {
 };
 
 const model = {
-    name: 'iview'
+    name: 'ant-design-vue'
 };
 
 simple.data = {
@@ -32,16 +32,16 @@ export default {
 };
 </script>
 <template>
-    <Form :model="model">
+    <a-form-model :model="model">
         <FieldGenerator
             :field="field"
             @on-field-change="handleFieldChange"
         />
-    </Form>
+    </a-form-model>
 </template>
 `;
 
-// 控制大小
+// size
 let size = {};
 
 const sizeLargeField = {
@@ -63,7 +63,7 @@ const sizeSmallField = {
 };
 
 const sizeModel = {
-    name: 'iview'
+    name: 'ant-design-vue'
 };
 
 size.code = `
@@ -72,7 +72,7 @@ export default {
     data() {
         return {
             sizeLargeField: ${JSON.stringify(sizeLargeField)},
-            sizeNormalField: ${JSON.stringify(sizeDefaultField)},
+            sizeDefaultField: ${JSON.stringify(sizeDefaultField)},
             sizeSmallField: ${JSON.stringify(sizeSmallField)},
             model: ${JSON.stringify(sizeModel)}
         };
@@ -80,17 +80,17 @@ export default {
 };
 </script>
 <template>
-    <Form :model="model">
+    <a-form-model :model="model">
         <FieldGenerator
             :field="sizeLargeField"
         />
         <FieldGenerator
-            :field="sizeNormalField"
+            :field="sizeDefaultField"
         />
         <FieldGenerator
             :field="sizeSmallField"
         />
-    </Form>
+    </a-form-model>
 </template>
 `;
 
@@ -102,100 +102,72 @@ size.data = {
 };
 
 // 可清空
-let clearable = {};
+let allowClear = {};
 
-const clearableField = {
+const allowClearField = {
     type: 'Input',
     model: 'name',
-    clearable: true
+    allowClear: true
 };
 
-const clearableModel = {
+const allowClearModel = {
     name: 'hover时，展示可清空按钮'
 };
 
-clearable.code = `
+allowClear.code = `
 <script>
 export default {
     data() {
         return {
-            field: ${JSON.stringify(clearableField)},
-            model: ${JSON.stringify(clearableModel)}
+            field: ${JSON.stringify(allowClearField)},
+            model: ${JSON.stringify(allowClearModel)}
         };
     }
 };
 </script>
 <template>
-    <Form :model="model">
+    <a-form-model :model="model">
         <FieldGenerator
             :field="field"
         />
-    </Form>
+    </a-form-model>
 </template>
 `;
 
-clearable.data = {
-    field: clearableField,
-    model: clearableModel
+allowClear.data = {
+    field: allowClearField,
+    model: allowClearModel
 };
 
-// 带icon
-let withIcon = {};
-
-const withIconField = {
-    type: 'Input',
-    model: 'name',
-    icon: 'ios-clock-outline'
-};
-
-const withIconModel = {
-    name: ''
-};
-
-withIcon.code = `
-<script>
-export default {
-    data() {
-        return {
-            field: ${JSON.stringify(withIconField)},
-            model: ${JSON.stringify(withIconModel)}
-        };
-    }
-};
-</script>
-<template>
-    <Form :model="model">
-        <FieldGenerator
-            :field="field"
-        />
-    </Form>
-</template>
-`;
-
-withIcon.data = {
-    field: withIconField,
-    model: withIconModel
-};
-
-// 前缀和后缀图标
+// prefix suffix
 
 let prefixAndSuffix = {};
 
 const prefixField = {
     type: 'Input',
-    model: 'name',
-    prefix: 'ios-contact'
+    model: 'url',
+    prefix: 'https://'
 };
 
 const suffixField = {
     type: 'Input',
-    model: 'name',
-    suffix: 'ios-search'
+    model: 'url',
+    suffix: '.com'
+};
+
+const prefixAndSuffixField = {
+    type: 'Input',
+    model: 'url',
+    prefix: {
+        type: 'user'
+    },
+    suffix: {
+        type: 'info-circle'
+    }
 };
 
 const prefixAndSuffixModel = {
-    name: '',
-    keyword: ''
+    url: ''
 };
 
 prefixAndSuffix.code = `
@@ -205,27 +177,269 @@ export default {
         return {
             prefixField: ${JSON.stringify(prefixField)},
             suffixField: ${JSON.stringify(suffixField)},
+            prefixAndSuffixField: ${JSON.stringify(prefixAndSuffixField)},
             model: ${JSON.stringify(prefixAndSuffixModel)}
         };
     }
 };
 </script>
 <template>
-    <Form :model="model">
+    <a-form-model :model="model">
         <FieldGenerator
             :field="prefixField"
         />
         <FieldGenerator
             :field="suffixField"
         />
-    </Form>
+        <FieldGenerator
+            :field="prefixAndSuffixField"
+        />
+    </a-form-model>
 </template>
 `;
 
 prefixAndSuffix.data = {
     prefixField,
     suffixField,
+    prefixAndSuffixField,
     model: prefixAndSuffixModel
+};
+
+// addonBeforeAndAddonAfter
+
+let addonBeforeAndAddonAfter = {};
+
+const addonBeforeField = {
+    type: 'Input',
+    model: 'url',
+    addonBefore: 'https://'
+};
+
+const addonAfterField = {
+    type: 'Input',
+    model: 'url',
+    addonAfter: '.com'
+};
+
+const addonBeforeAndAddonAfterField = {
+    type: 'Input',
+    model: 'url',
+    addonBefore: {
+        type: 'user'
+    },
+    addonAfter: {
+        type: 'info-circle'
+    }
+};
+
+const addonBeforeAndAddonAfterModel = {
+    url: ''
+};
+
+addonBeforeAndAddonAfter.code = `
+<script>
+export default {
+    data() {
+        return {
+            addonBeforeField: ${JSON.stringify(addonBeforeField)},
+            addonAfterField: ${JSON.stringify(addonAfterField)},
+            addonBeforeAndAddonAfterField: ${JSON.stringify(addonBeforeAndAddonAfterField)},
+            model: ${JSON.stringify(addonBeforeAndAddonAfterModel)}
+        };
+    }
+};
+</script>
+<template>
+    <a-form-model :model="model">
+        <FieldGenerator
+            :field="addonBeforeField"
+        />
+        <FieldGenerator
+            :field="addonAfterField"
+        />
+        <FieldGenerator
+            :field="addonBeforeAndAddonAfterField"
+        />
+    </a-form-model>
+</template>
+`;
+
+addonBeforeAndAddonAfter.data = {
+    addonBeforeField,
+    addonAfterField,
+    addonBeforeAndAddonAfterField,
+    model: addonBeforeAndAddonAfterModel
+};
+
+// password
+let password = {};
+
+const passwordField = {
+    type: 'Input',
+    model: 'name',
+    subtype: 'password',
+    visibilityToggle: true
+};
+
+const passwordModel = {
+    name: ''
+};
+
+password.code = `
+<script>
+export default {
+    data() {
+        return {
+            field: ${JSON.stringify(passwordField)},
+            model: ${JSON.stringify(passwordModel)}
+        };
+    }
+};
+</script>
+<template>
+    <a-form-model :model="model">
+        <FieldGenerator
+            :field="field"
+        />
+    </a-form-model>
+</template>
+`;
+
+password.data = {
+    field: passwordField,
+    model: passwordModel
+};
+
+// 文本域
+let textarea = {};
+
+const textareaField = {
+    type: 'Input',
+    model: 'name',
+    subtype: 'textarea',
+    rows: 4,
+    allowClear: true
+};
+
+const textareaModel = {
+    name: ''
+};
+
+textarea.code = `
+<script>
+export default {
+    data() {
+        return {
+            field: ${JSON.stringify(textareaField)},
+            model: ${JSON.stringify(textareaModel)}
+        };
+    }
+};
+</script>
+<template>
+    <a-form-model :model="model">
+        <FieldGenerator
+            :field="field"
+        />
+    </a-form-model>
+</template>
+`;
+
+textarea.data = {
+    field: textareaField,
+    model: textareaModel
+};
+
+// 适应文本高度的文本域
+let aotusizeTextarea = {};
+
+const aotusizeTextareaField = {
+    type: 'Input',
+    model: 'name',
+    subtype: 'textarea',
+    autosize: true
+};
+
+const aotusizeTextareaModel = {
+    name: ''
+};
+
+aotusizeTextarea.code = `
+<script>
+export default {
+    data() {
+        return {
+            field: ${JSON.stringify(aotusizeTextareaField)},
+            model: ${JSON.stringify(aotusizeTextareaModel)}
+        };
+    }
+};
+</script>
+<template>
+    <a-form-model :model="model">
+        <FieldGenerator
+            :field="field"
+        />
+    </a-form-model>
+</template>
+`;
+
+aotusizeTextarea.data = {
+    field: aotusizeTextareaField,
+    model: aotusizeTextareaModel
+};
+
+
+
+// 禁用
+let disabled = {};
+
+const disabledInputField = {
+    type: 'Input',
+    model: 'name',
+    disabled: true
+};
+
+const disabledTextareaField = {
+    type: 'Input',
+    model: 'intro',
+    subtype: 'textarea',
+    disabled: true
+};
+
+const disabledModel = {
+    name: '',
+    intro: ''
+};
+
+disabled.code = `
+<script>
+export default {
+    data() {
+        return {
+            inputField: ${JSON.stringify(disabledInputField)},
+            textareaField: ${JSON.stringify(disabledTextareaField)},
+            model: ${JSON.stringify(disabledModel)}
+        };
+    }
+};
+</script>
+<template>
+    <a-form-model :model="model">
+        <FieldGenerator
+            :field="field"
+        />
+        <FieldGenerator
+            :field="textareaField"
+        />
+    </a-form-model>
+</template>
+`;
+
+disabled.data = {
+    inputField: disabledInputField,
+    textareaField: disabledTextareaField,
+    model: disabledModel
 };
 
 // 搜索框
@@ -269,7 +483,7 @@ export default {
 };
 </script>
 <template>
-    <Form :model="model">
+    <a-form-model :model="model">
         <FieldGenerator
             :field="searchField"
         />
@@ -279,7 +493,7 @@ export default {
         <FieldGenerator
             :field="searchWithEnterButtonField"
         />
-    </Form>
+    </a-form-model>
 </template>
 `;
 
@@ -290,203 +504,15 @@ search.data = {
     model: searchModel
 };
 
-// 文本域
-let textarea = {};
-
-const textareaField = {
-    type: 'Input',
-    model: 'name',
-    subtype: 'textarea',
-    rows: 4
-};
-
-const textareaModel = {
-    name: ''
-};
-
-textarea.code = `
-<script>
-export default {
-    data() {
-        return {
-            field: ${JSON.stringify(textareaField)},
-            model: ${JSON.stringify(textareaModel)}
-        };
-    }
-};
-</script>
-<template>
-    <Form :model="model">
-        <FieldGenerator
-            :field="field"
-        />
-    </Form>
-</template>
-`;
-
-textarea.data = {
-    field: textareaField,
-    model: textareaModel
-};
-
-// 适应文本高度的文本域
-let aotusizeTextarea = {};
-
-const aotusizeTextareaField = {
-    type: 'Input',
-    model: 'name',
-    subtype: 'textarea',
-    autosize: true
-};
-
-const aotusizeTextareaModel = {
-    name: ''
-};
-
-aotusizeTextarea.code = `
-<script>
-export default {
-    data() {
-        return {
-            field: ${JSON.stringify(aotusizeTextareaField)},
-            model: ${JSON.stringify(aotusizeTextareaModel)}
-        };
-    }
-};
-</script>
-<template>
-    <Form :model="model">
-        <FieldGenerator
-            :field="field"
-        />
-    </Form>
-</template>
-`;
-
-aotusizeTextarea.data = {
-    field: aotusizeTextareaField,
-    model: aotusizeTextareaModel
-};
-
-// 禁用
-let disabled = {};
-
-const disabledInputField = {
-    type: 'Input',
-    model: 'name',
-    disabled: true
-};
-
-const disabledTextareaField = {
-    type: 'Input',
-    model: 'intro',
-    subtype: 'textarea',
-    disabled: true
-};
-
-const disabledModel = {
-    name: '',
-    intro: ''
-};
-
-disabled.code = `
-<script>
-export default {
-    data() {
-        return {
-            inputField: ${JSON.stringify(disabledInputField)},
-            textareaField: ${JSON.stringify(disabledTextareaField)},
-            model: ${JSON.stringify(disabledModel)}
-        };
-    }
-};
-</script>
-<template>
-    <Form :model="model">
-        <FieldGenerator
-            :field="field"
-        />
-    </Form>
-</template>
-`;
-
-disabled.data = {
-    inputField: disabledInputField,
-    textareaField: disabledTextareaField,
-    model: disabledModel
-};
-
-// 复合型输入框
-// prepend append
-
-let prependAndAppend = {};
-
-const prependField = {
-    type: 'Input',
-    model: 'url',
-    prepend: 'https://'
-};
-
-const appendField = {
-    type: 'Input',
-    model: 'url',
-    append: '.com'
-};
-
-const prependAndappendField = {
-    type: 'Input',
-    model: 'url',
-    prepend: 'https://',
-    append: '.com'
-};
-
-const prependAndAppendModel = {
-    url: ''
-};
-
-prependAndAppend.code = `
-<script>
-export default {
-    data() {
-        return {
-            prependField: ${JSON.stringify(prependField)},
-            suffixField: ${JSON.stringify(appendField)},
-            prependAndSuffixField: ${JSON.stringify(prependAndappendField)},
-            model: ${JSON.stringify(prependAndAppendModel)}
-        };
-    }
-};
-</script>
-<template>
-    <Form :model="model">
-        <FieldGenerator
-            :field="prependField"
-        />
-        <FieldGenerator
-            :field="suffixField"
-        />
-        <FieldGenerator
-            :field="prependAndSuffixField"
-        />
-    </Form>
-</template>
-`;
-
-prependAndAppend.data = {
-    prependField,
-    appendField,
-    prependAndappendField,
-    model: prependAndAppendModel
-};
 export default {
     simple,
     size,
-    clearable,
-    withIcon,
+    allowClear,
     prefixAndSuffix,
+    addonBeforeAndAddonAfter,
     search,
+    password,
     textarea,
     aotusizeTextarea,
-    disabled,
-    prependAndAppend
+    disabled
 };

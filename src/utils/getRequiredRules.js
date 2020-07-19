@@ -3,7 +3,6 @@
  * (1)、we have cutom components like logicinput which need to cutom the required rule too;
  * (2)、the origin require validate for empty array is valid, which not meet our need;
  *
- * notice: consider the iview use the old version of async-validator
  */
 import {getValidType} from './getValidType';
 export const getRequiredRules = function getRequiredRulesFunc(field) {

@@ -19,11 +19,11 @@ export default [
         path: '/',
         redirect: '/core-components',
     },
-    // {
-    //     path: '/home',
-    //     name: 'home',
-    //     component: home
-    // },
+    {
+        path: '/home',
+        name: 'home',
+        component: home
+    },
     {
         path: '/core-components',
         redirect: '/core-components/FieldGenerator',
