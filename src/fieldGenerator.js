@@ -141,45 +141,23 @@ export default {
         return field;
     },
     methods: {
-        /**
-         * 处理子组件的提交行为，涉及到的子组件包含 Submit
-         * 提交行为最终会emit到父组件
-         *
-         * @param {Object} component 触发提交事件的组件
-         */
-        handleSubmitClick(component) {
-            component.loading = true;
-            let field = component.field;
-            this.submit(field).then(({valid, model, res}) => {
-                this.$emit('on-submit', {valid, model, field, res});
-                component.loading = false;
-            }).catch(({valid, model, error}) => {
-                component.loading = false;
-                this.$emit('on-submit', {valid, model, field, error});
-            });
-        },
-        /**
-         * Upload组件预览时触发
-         */
-        handleFieldPreview($event) {
-            this.$emit('on-field-preview', $event);
-        },
-
-        handleResetClick($event) {
-            this.$emit('on-reset', $event);
-        },
-        handleButtonCancel($event) {
-            this.$emit('on-button-cancel', $event);
-        },
-        handleLabelTipClick($event) {
-            this.$emit('on-label-tip-click',$event);
-        },
-        handelCheckboxCardClick($event) {
-            this.$emit('on-checkboxCard-click', $event);
-        },
-        handelListItemClick($event) {
-            this.$emit('on-list-item-click', $event);
-        },
+        // /**
+        //  * 处理子组件的提交行为，涉及到的子组件包含 Submit
+        //  * 提交行为最终会emit到父组件
+        //  *
+        //  * @param {Object} component 触发提交事件的组件
+        //  */
+        // handleSubmitClick(component) {
+        //     component.loading = true;
+        //     let field = component.field;
+        //     this.submit(field).then(({valid, model, res}) => {
+        //         this.$emit('on-submit', {valid, model, field, res});
+        //         component.loading = false;
+        //     }).catch(({valid, model, error}) => {
+        //         component.loading = false;
+        //         this.$emit('on-submit', {valid, model, field, error});
+        //     });
+        // },
 
         /**
          * 提交处理，需要对表单进行校验，如果有请求行为，则触发请求，返回Promise
