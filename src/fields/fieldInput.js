@@ -9,7 +9,7 @@ const {TextArea, Password} = Input;
 const FiledInput = {
     props: {
         value: {
-            type: [Object, String],
+            type: String,
             default: ''
         },
         field: {

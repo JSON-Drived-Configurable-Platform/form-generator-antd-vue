@@ -13,6 +13,7 @@ const FieldGenerator = () => import(/* webpackChunkName: "FieldGenerator" */ '..
 // // 内置组件
 const Input = () => import(/* webpackChunkName: "Input" */ '../page/doc/Input');
 const Button = () => import(/* webpackChunkName: "Button" */ '../page/doc/Button');
+const Switch = () => import(/* webpackChunkName: "Switch" */ '../page/doc/Switch');
 
 export default [
     {
@@ -21,7 +22,6 @@ export default [
     },
     {
         path: '/home',
-        name: 'home',
         component: home
     },
     {
@@ -42,14 +42,16 @@ export default [
         children: [
             {
                 path: '/doc/Input',
-                name: 'doc-Input',
                 component: Input
             },
             {
                 path: '/doc/Button',
-                name: 'doc-Button',
                 component: Button
             },
+            {
+                path: '/doc/Switch',
+                component: Switch
+            }
         ],
     },
 ];

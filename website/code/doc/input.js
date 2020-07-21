@@ -17,11 +17,12 @@ simple.data = {
 
 simple.code = `
 <script>
+const field = ${JSON.stringify(field, null, 4)};
 export default {
     data() {
         return {
             field,
-            model
+            model: ${JSON.stringify(model)};
         };
     },
     methods: {
@@ -68,12 +69,15 @@ const sizeModel = {
 
 size.code = `
 <script>
+const sizeLargeField = ${JSON.stringify(sizeLargeField, null, 4)};
+const sizeDefaultField = ${JSON.stringify(sizeDefaultField, null, 4)};
+const sizeSmallField = ${JSON.stringify(sizeSmallField, null, 4)};
 export default {
     data() {
         return {
-            sizeLargeField: ${JSON.stringify(sizeLargeField)},
-            sizeDefaultField: ${JSON.stringify(sizeDefaultField)},
-            sizeSmallField: ${JSON.stringify(sizeSmallField)},
+            sizeLargeField,
+            sizeDefaultField,
+            sizeSmallField,
             model: ${JSON.stringify(sizeModel)}
         };
     }
@@ -116,10 +120,11 @@ const allowClearModel = {
 
 allowClear.code = `
 <script>
+const field = ${JSON.stringify(allowClearField, null, 4)};
 export default {
     data() {
         return {
-            field: ${JSON.stringify(allowClearField)},
+            field,
             model: ${JSON.stringify(allowClearModel)}
         };
     }
@@ -172,12 +177,15 @@ const prefixAndSuffixModel = {
 
 prefixAndSuffix.code = `
 <script>
+const prefixField = ${JSON.stringify(prefixField, null, 4)};
+const suffixField = ${JSON.stringify(suffixField, null, 4)};
+const prefixAndSuffixField = ${JSON.stringify(prefixAndSuffixField, null, 4)};
 export default {
     data() {
         return {
-            prefixField: ${JSON.stringify(prefixField)},
-            suffixField: ${JSON.stringify(suffixField)},
-            prefixAndSuffixField: ${JSON.stringify(prefixAndSuffixField)},
+            prefixField,
+            suffixField,
+            prefixAndSuffixField,
             model: ${JSON.stringify(prefixAndSuffixModel)}
         };
     }
@@ -238,12 +246,15 @@ const addonBeforeAndAddonAfterModel = {
 
 addonBeforeAndAddonAfter.code = `
 <script>
+const addonBeforeField = ${JSON.stringify(addonBeforeField, null, 4)};
+const addonAfterField = ${JSON.stringify(addonAfterField, null, 4)};
+const addonBeforeAndAddonAfterField = ${JSON.stringify(addonBeforeAndAddonAfterField, null, 4)};
 export default {
     data() {
         return {
-            addonBeforeField: ${JSON.stringify(addonBeforeField)},
-            addonAfterField: ${JSON.stringify(addonAfterField)},
-            addonBeforeAndAddonAfterField: ${JSON.stringify(addonBeforeAndAddonAfterField)},
+            addonBeforeField,
+            addonAfterField,
+            addonBeforeAndAddonAfterField,
             model: ${JSON.stringify(addonBeforeAndAddonAfterModel)}
         };
     }
@@ -287,10 +298,11 @@ const passwordModel = {
 
 password.code = `
 <script>
+const field = ${JSON.stringify(passwordField, null, 4)};
 export default {
     data() {
         return {
-            field: ${JSON.stringify(passwordField)},
+            field,
             model: ${JSON.stringify(passwordModel)}
         };
     }
@@ -327,10 +339,11 @@ const textareaModel = {
 
 textarea.code = `
 <script>
+const field = ${JSON.stringify(textareaField, null, 4)};
 export default {
     data() {
         return {
-            field: ${JSON.stringify(textareaField)},
+            field,
             model: ${JSON.stringify(textareaModel)}
         };
     }
@@ -366,10 +379,11 @@ const aotusizeTextareaModel = {
 
 aotusizeTextarea.code = `
 <script>
+const field = ${JSON.stringify(aotusizeTextareaField, null, 4)};
 export default {
     data() {
         return {
-            field: ${JSON.stringify(aotusizeTextareaField)},
+            field,
             model: ${JSON.stringify(aotusizeTextareaModel)}
         };
     }
@@ -414,11 +428,13 @@ const disabledModel = {
 
 disabled.code = `
 <script>
+const inputField = ${JSON.stringify(disabledInputField, null, 4)};
+const textareaField = ${JSON.stringify(disabledTextareaField, null, 4)};
 export default {
     data() {
         return {
-            inputField: ${JSON.stringify(disabledInputField)},
-            textareaField: ${JSON.stringify(disabledTextareaField)},
+            inputField,
+            textareaField,
             model: ${JSON.stringify(disabledModel)}
         };
     }

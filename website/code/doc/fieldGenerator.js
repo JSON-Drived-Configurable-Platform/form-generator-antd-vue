@@ -24,10 +24,11 @@ simple.data = {
 
 simple.code = `
 <script>
+const field = ${JSON.stringify(field, null, 4)};
 export default {
     data() {
         return {
-            field: ${JSON.stringify(field)},
+            field,
             model: ${JSON.stringify(model)}
         };
     }

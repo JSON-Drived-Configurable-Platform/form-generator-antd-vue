@@ -48,6 +48,18 @@ const inputPropsKeys = [
     'size'
 ];
 
+// doc: https://antdv.com/components/switch-cn/
+const switchPropsKeys = [
+    'autoFocus',
+    'checked',
+    'checkedChildren',
+    'defaultChecked',
+    'disabled',
+    'loading',
+    'size',
+    'unCheckedChildren'
+];
+
 /**
  * 获取IconProps
  *
@@ -113,6 +125,17 @@ export function getInputProps(field = {}, props = {}) {
     return {
         props: {
             ...getPropsFromConfig(inputPropsKeys, field),
+            ...props.props
+        },
+        slot: props.slot,
+        on: props.on
+    };
+}
+
+export function getSwitchProps(field = {}, props = {}) {
+    return {
+        props: {
+            ...getPropsFromConfig(switchPropsKeys, field),
             ...props.props
         },
         slot: props.slot,

@@ -217,7 +217,7 @@
                     <p>通过<code>field.subtype</code>可以设置为password。</p>
                 </div>
                 <i-code slot="code" lang="html">
-                    {{ code.textarea.code }}
+                    {{ code.password.code }}
                 </i-code>
             </Demo>
             <Demo title="textarea">

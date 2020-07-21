@@ -148,10 +148,10 @@ export default {
                 //             label: 'RadioCard',
                 //             name: '/doc/RadioCard'
                 //         },
-                //         {
-                //             label: 'Switch',
-                //             name: '/doc/Switch'
-                //         },
+                {
+                    label: 'Switch',
+                    name: '/doc/Switch'
+                },
                 //         {
                 //             label: 'Select',
                 //             name: '/doc/Select'
