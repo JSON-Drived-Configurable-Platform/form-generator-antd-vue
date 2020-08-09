@@ -1,26 +1,33 @@
-import {Input, Icon} from 'ant-design-vue';
-import {getInputProps, getIconProps} from '../utils/components-props';
+/* eslint-disable no-unused-vars */
+import {Select} from 'ant-design-vue';
+import {classPrefix} from '../utils/const';
+import {getSelectProps, getIconProps} from '../utils/components-props';
 import {fieldChange} from '../utils/common-emiters';
 import { isObject } from 'core-js/fn/object';
 
-const {TextArea, Password} = Input;
-const FiledInput = {
+const FiledSelect = {
     props: {
         value: {
-            type: String,
+            type: [Boolean, String, Number, Array],
             default: ''
         },
         field: {
             type: Object,
             required: true
-        }
+        },
     },
     data() {
-        return {};
+        return {
+            loading: false,
+        };
+    },
+    computed: {
+        classes() {
+            return `${classPrefix}-${this.field.type.toLowerCase()}`;
+        }
     },
     methods: {
-        handleChange(e) {
-            let value = e.target.value;
+        handleChange(value, e) {
             this.$emit('fieldChange', {
                 model: this.field.model,
                 value,
@@ -29,14 +36,14 @@ const FiledInput = {
             });
         },
     },
-    /* eslint-disable no-unused-vars */
     render(h) {
         const iconPropTypes = [
-            'prefix',
-            'suffix',
-            'addonBefore',
-            'addonAfter'
+            'suffixIcon',
+            'removeIcon',
+            'clearIcon',
+            'menuItemSelectedIcon'
         ];
+
         const iconPropVNodes = iconPropTypes.reduce((iconVNodes, type) => {
             const config = this.field[type];
             const props = isObject(config) ? getIconProps(config) : config;
@@ -44,30 +51,21 @@ const FiledInput = {
             return iconVNodes;
         }, {});
 
-        const inputProps = getInputProps(this.field, {
+        const propsConfig = getSelectProps(this.field, {
             props: {
-                value: this.value,
-                ...iconPropVNodes
+                checked: this.value
             },
             on: {
                 change: this.handleChange
             }
         });
-
-        switch (this.field.subtype) {
-            case 'textArea':
-                return <TextArea {...inputProps}/>;
-            case 'password':
-                return <Password {...inputProps}/>;
-            default:
-                return <Input {...inputProps}/>;
-        }
+        return <Select {...propsConfig} />;
     }
 };
 
 // Event exposed to FieldGenerator and FormGenerator
-FiledInput.emiters = {
+FiledSelect.emiters = {
     fieldChange
 };
 
-export default FiledInput;
+export default FiledSelect;

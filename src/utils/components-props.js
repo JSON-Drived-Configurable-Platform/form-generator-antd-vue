@@ -1,6 +1,34 @@
 /* eslint-disable no-unused-vars */
 import {getPropsFromConfig} from '../utils/fieldProps';
-import { render } from 'less';
+
+// doc https://www.antdv.com/components/divider-cn/#API
+const dividerPropsKeys = [
+    'dashed',
+    'orientation',
+    // @origin: type
+    'subtype',
+    // extend
+    'title'
+];
+
+/**
+ * 获取DividerProps
+ *
+ * @param {Object} field config prop
+ * @param {Object} props current props
+ */
+export function getDividerProps(field = {}, props = {}) {
+    return {
+        props: {
+            ...getPropsFromConfig(dividerPropsKeys, field),
+            ...props.props
+        },
+        slot: props.slot,
+        on: props.on
+    };
+}
+
+
 // doc: https://antdv.com/components/input-cn/#Input
 const buttonPropsKeys = [
     'disabled',
@@ -15,69 +43,6 @@ const buttonPropsKeys = [
     'loading',
     'slot'
 ];
-
-const popconfirmPropsKeys = [
-    'cancelText',
-    'okText',
-    'okType',
-    'title',
-    'disabled'
-];
-
-const iconPropsKeys = [
-    'type',
-    'style',
-    'theme',
-    'spin',
-    'rotate',
-    'twoToneColor'
-];
-
-// doc: https://antdv.com/components/input-cn/#Input
-const inputPropsKeys = [
-    'addonBefore',
-    'addonAfter',
-    'prefix',
-    'suffix',
-    // @origin type
-    'subtype',
-    'placeholder',
-    'allowClear',
-    'disabled',
-    'maxLength',
-    'size'
-];
-
-// doc: https://antdv.com/components/switch-cn/
-const switchPropsKeys = [
-    'autoFocus',
-    'checked',
-    'checkedChildren',
-    'defaultChecked',
-    'disabled',
-    'loading',
-    'size',
-    'unCheckedChildren'
-];
-
-/**
- * 获取IconProps
- *
- * @param {Object} field config prop
- * @param {Object} props current props
- */
-export function getIconProps(field = {}, props = {}) {
-    return {
-        props: {
-            ...getPropsFromConfig(iconPropsKeys, field),
-            ...props.props
-        },
-        slot: props.slot,
-        on: props.on
-    };
-
-
-}
 
 /**
  * 获取ButtonProps
@@ -96,6 +61,13 @@ export function getButtonProps(field = {}, props = {}) {
     };
 }
 
+const popconfirmPropsKeys = [
+    'cancelText',
+    'okText',
+    'okType',
+    'title',
+    'disabled'
+];
 
 /**
  * 获取PopconfirmProps
@@ -115,6 +87,47 @@ export function getPopconfirmProps(field = {}, props = {}) {
 }
 
 
+const iconPropsKeys = [
+    'type',
+    'style',
+    'theme',
+    'spin',
+    'rotate',
+    'twoToneColor'
+];
+
+/**
+ * 获取IconProps
+ *
+ * @param {Object} field config prop
+ * @param {Object} props current props
+ */
+export function getIconProps(field = {}, props = {}) {
+    return {
+        props: {
+            ...getPropsFromConfig(iconPropsKeys, field),
+            ...props.props
+        },
+        slot: props.slot,
+        on: props.on
+    };
+}
+
+// doc: https://antdv.com/components/input-cn/#Input
+const inputPropsKeys = [
+    'addonBefore',
+    'addonAfter',
+    'prefix',
+    'suffix',
+    // @origin type
+    'subtype',
+    'placeholder',
+    'allowClear',
+    'disabled',
+    'maxLength',
+    'size'
+];
+
 /**
  * 获取InputProps
  *
@@ -132,10 +145,72 @@ export function getInputProps(field = {}, props = {}) {
     };
 }
 
+// doc: https://antdv.com/components/switch-cn/
+const switchPropsKeys = [
+    'autoFocus',
+    'checked',
+    'checkedChildren',
+    'defaultChecked',
+    'disabled',
+    'loading',
+    'size',
+    'unCheckedChildren'
+];
+
 export function getSwitchProps(field = {}, props = {}) {
     return {
         props: {
             ...getPropsFromConfig(switchPropsKeys, field),
+            ...props.props
+        },
+        slot: props.slot,
+        on: props.on
+    };
+}
+
+// doc https://www.antdv.com/components/select-cn/#API
+const selectPropsKeys = [
+    'allowClear',
+    'autoClearSearchValue',
+    'autoFocus',
+    'defaultActiveFirstOption',
+    'defaultValue',
+    'disabled',
+    'dropdownClassName',
+    'dropdownMatchSelectWidth',
+    'dropdownRender',
+    'dropdownStyle',
+    'dropdownMenuStyle',
+    'filterOption',
+    'firstActiveValue',
+    'getPopupContainer',
+    'labelInValue',
+    'maxTagCount',
+    'maxTagPlaceholder',
+    'maxTagTextLength',
+    'mode',
+    'notFoundContent',
+    'optionFilterProp',
+    'optionLabelProp',
+    'placeholder',
+    'showSearch',
+    'showArrow',
+    'size',
+    'suffixIcon',
+    'removeIcon',
+    'clearIcon',
+    'menuItemSelectedIcon',
+    'tokenSeparators',
+    'options',
+    'defaultOpen',
+    'open'
+];
+
+
+export function getSelectProps(field = {}, props = {}) {
+    return {
+        props: {
+            ...getPropsFromConfig(selectPropsKeys, field),
             ...props.props
         },
         slot: props.slot,

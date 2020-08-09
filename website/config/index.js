@@ -45,33 +45,37 @@ export default {
         //     label: '实践与思考',
         //     name: '/practice'
         // },
-        // {
-        //     label: '开发',
-        //     name: '/development',
-        //     submenu: [
-        //         {
-        //             label: '组件速查',
-        //             name: '/development/components-choosen'
-        //         },
-        //         {
-        //             label: '控件的可见性',
-        //             name: '/development/visibility'
-        //         },
-        //         {
-        //             label: '表单校验',
-        //             name: '/development/form-validate'
-        //         },
-        //         {
-        //             label: '动态获取配置数据',
-        //             name: '/development/dynamic-config-data'
-        //         },
+        {
+            label: '开发',
+            name: '/development',
+            submenu: [
+                {
+                    label: '所支持的组件',
+                    name: '/development/supported-components'
+                },
+                // {
+                //     label: '组件速查',
+                //     name: '/development/components-choosen'
+                // },
+                // {
+                //     label: '控件的可见性',
+                //     name: '/development/visibility'
+                // },
+                // {
+                //     label: '表单校验',
+                //     name: '/development/form-validate'
+                // },
+                // {
+                //     label: '动态获取配置数据',
+                //     name: '/development/dynamic-config-data'
+                // },
 
-        //         {
-        //             label: '函数类型的配置项',
-        //             name: '/development/function-field'
-        //         },
-        //     ]
-        // },
+                // {
+                //     label: '函数类型的配置项',
+                //     name: '/development/function-field'
+                // },
+            ]
+        },
         // {
         //     label: '进阶',
         //     name: '/advance',

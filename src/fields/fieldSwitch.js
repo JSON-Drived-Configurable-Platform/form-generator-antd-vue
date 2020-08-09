@@ -36,7 +36,7 @@ const FiledSwitch = {
         },
     },
     render(h) {
-        const switchPropsConfig = getSwitchProps(this.field, {
+        const propsConfig = getSwitchProps(this.field, {
             props: {
                 checked: this.value
             },
@@ -44,7 +44,7 @@ const FiledSwitch = {
                 change: this.handleChange
             }
         });
-        return <Switch {...switchPropsConfig} />;
+        return <Switch {...propsConfig} />;
     }
 };
 

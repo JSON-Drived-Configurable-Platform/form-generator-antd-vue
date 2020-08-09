@@ -10,6 +10,10 @@ const home = () => import(/* webpackChunkName: "home" */ '../page/home');
 // 核心组件
 const FieldGenerator = () => import(/* webpackChunkName: "FieldGenerator" */ '../page/core-components/FieldGenerator');
 
+// 开发
+const supportedComponents = () => import(/* webpackChunkName: "supportedComponents" */ '../page/development/supported-components');
+
+
 // // 内置组件
 const Input = () => import(/* webpackChunkName: "Input" */ '../page/doc/Input');
 const Button = () => import(/* webpackChunkName: "Button" */ '../page/doc/Button');
@@ -32,6 +36,16 @@ export default [
             {
                 path: '/core-components/FieldGenerator',
                 component: FieldGenerator
+            }
+        ]
+    },
+    {
+        path: '/development',
+        component: Main,
+        children: [
+            {
+                path: '/development/supported-components',
+                component: supportedComponents
             }
         ]
     },
