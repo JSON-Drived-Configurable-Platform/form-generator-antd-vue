@@ -1,14 +1,13 @@
 /* eslint-disable no-unused-vars */
-import {Select} from 'ant-design-vue';
+import {InputNumber} from 'ant-design-vue';
 import {classPrefix} from '../utils/const';
-import {getSelectProps, getIconProps} from '../utils/components-props';
+import {getInputNumberProps} from '../utils/components-props';
 import {fieldChange} from '../utils/common-emiters';
-import { isObject } from 'core-js/fn/object';
 
-const FiledSelect = {
+const FieldNumber = {
     props: {
         value: {
-            type: [Boolean, String, Number, Array],
+            type: Number,
             default: ''
         },
         field: {
@@ -37,21 +36,7 @@ const FiledSelect = {
         },
     },
     render(h) {
-        const iconPropTypes = [
-            'suffixIcon',
-            'removeIcon',
-            'clearIcon',
-            'menuItemSelectedIcon'
-        ];
-
-        const iconPropVNodes = iconPropTypes.reduce((iconVNodes, type) => {
-            const config = this.field[type];
-            const props = isObject(config) ? getIconProps(config) : config;
-            iconVNodes[type] = isObject(props) ? <Icon  {...props} /> : props;
-            return iconVNodes;
-        }, {});
-
-        const propsConfig = getSelectProps(this.field, {
+        const propsConfig = getInputNumberProps(this.field, {
             props: {
                 value: this.value
             },
@@ -59,13 +44,13 @@ const FiledSelect = {
                 change: this.handleChange
             }
         });
-        return <Select {...propsConfig} />;
+        return <InputNumber {...propsConfig} />;
     }
 };
 
 // Event exposed to FieldGenerator and FormGenerator
-FiledSelect.emiters = {
+FieldNumber.emiters = {
     fieldChange
 };
 
-export default FiledSelect;
+export default FieldNumber;

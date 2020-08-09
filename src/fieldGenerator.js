@@ -260,7 +260,7 @@ export default {
         const Component = fieldComponents[`field${this.computedField.type}`];
         // modelIdentifier
         const modelIdentifier = this.computedField.model;
-        // console.log('FormContext.model', this.FormContext.model);
+        console.log('FormContext.model', modelIdentifier, this.FormContext.model);
         const value = this.FormContext.model[modelIdentifier];
 
         const formItemProps = {

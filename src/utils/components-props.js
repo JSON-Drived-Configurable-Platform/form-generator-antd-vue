@@ -206,11 +206,35 @@ const selectPropsKeys = [
     'open'
 ];
 
-
 export function getSelectProps(field = {}, props = {}) {
     return {
         props: {
             ...getPropsFromConfig(selectPropsKeys, field),
+            ...props.props
+        },
+        slot: props.slot,
+        on: props.on
+    };
+}
+
+const inputNumberPropKeys = [
+    'autoFocus',
+    'defaultValue',
+    'disabled',
+    'formatter',
+    'max',
+    'min',
+    'parser',
+    'precision',
+    'decimalSeparator',
+    'size',
+    'step'
+];
+
+export function getInputNumberProps(field = {}, props = {}) {
+    return {
+        props: {
+            ...getPropsFromConfig(inputNumberPropKeys, field),
             ...props.props
         },
         slot: props.slot,

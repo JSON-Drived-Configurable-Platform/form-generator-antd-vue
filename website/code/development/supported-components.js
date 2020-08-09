@@ -64,6 +64,23 @@ const fields = [
         dashed: true,
         orientation: 'left',
         subtype: 'horizontal',
+        title: 'InputNumber'
+    },
+    {
+        type: 'InputNumber',
+        model: 'percentage',
+        min: 0,
+        max: 100,
+        step: 5,
+        // defaultValue: 0,
+        formatter: value => `${value}%`,
+        parser: value => value.replace('%', '')
+    },
+    {
+        type: 'Divider',
+        dashed: true,
+        orientation: 'left',
+        subtype: 'horizontal',
         title: 'Button'
     },
     {
@@ -89,8 +106,9 @@ const fields = [
 
 const model = {
     name: 'bingblog',
-    open: false,
-    person: 'bingblog'
+    open: true,
+    person: 'bingblog',
+    percentage: 5
 };
 
 simple.data = {
