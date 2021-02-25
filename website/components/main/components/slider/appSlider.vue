@@ -1,42 +1,38 @@
 <template>
-    <Sider
-        hide-trigger
-        :style="{background: '#fff', width: '240px'}"
-    >
-        <Menu
-            :active-name="activeName"
-            :open-names="openNames"
+    <div :style="{background: '#fff', width: '240px'}">
+        <a-menu
             theme="light"
             width="auto"
-            @on-select="handleSelect"
+            mode="inline"
+            @click="handleSelect"
         >
-            <template v-for="(menu, i) in menuList">
-                <Submenu
+            <template v-for="menu in menuList">
+                <a-sub-menu
                     v-if="menu.submenu"
-                    :key="i"
+                    :key="menu.name"
                     :name="menu.name"
                 >
                     <template slot="title">
                         {{ menu.label }}
                     </template>
-                    <MenuItem
-                        v-for="(item, j) in menu.submenu"
-                        :key="j"
+                    <a-menu-item
+                        v-for="item in menu.submenu"
+                        :key="item.name"
                         :name="item.name"
                     >
                         {{ item.label }}
-                    </MenuItem>
-                </Submenu>
-                <MenuItem
+                    </a-menu-item>
+                </a-sub-menu>
+                <a-menu-item
                     v-else
-                    :key="i"
+                    :key="menu.name"
                     :name="menu.name"
                 >
                     {{ menu.label }}
-                </MenuItem>
+                </a-menu-item>
             </template>
-        </Menu>
-    </Sider>
+        </a-menu>
+    </div>
 </template>
 
 <script>
@@ -47,24 +43,14 @@ export default {
             default() {
                 return [];
             }
-        },
-        activeName: {
-            type: String,
-            default: ''
-        },
-        openNames: {
-            type: Array,
-            default() {
-                return [];
-            }
         }
     },
     data() {
         return {};
     },
     methods: {
-        handleSelect(name) {
-            this.$emit('on-select', name);
+        handleSelect({ key }) {
+            this.$emit('on-select', key);
         }
     }
 };

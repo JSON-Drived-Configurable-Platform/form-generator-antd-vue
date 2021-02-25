@@ -1,12 +1,12 @@
 <template>
-    <Breadcrumb :style="{margin: '24px 0'}">
-        <BreadcrumbItem
+    <a-breadcrumb :style="{margin: '24px 0'}">
+        <a-breadcrumb-item
             v-for="(item, index) in cat"
             :key="index"
         >
             {{ item }}
-        </BreadcrumbItem>
-    </Breadcrumb>
+        </a-breadcrumb-item>
+    </a-breadcrumb>
 </template>
 
 <script>

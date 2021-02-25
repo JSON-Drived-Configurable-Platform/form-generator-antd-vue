@@ -1,22 +1,20 @@
 <template>
     <div class="layout-container">
-        <Layout>
+        <a-layout>
             <appHeader :title="title" />
-            <Layout class="layout-body ivu-layout-has-sider">
+            <a-layout class="layout-body ivu-layout-has-sider">
                 <appSlider
                     :menu-list="menuList"
-                    :active-name="pagePath"
-                    :open-names="openNames"
                     @on-select="turnToPage"
                 />
-                <Layout class="layout-body-right">
+                <a-layout class="layout-body-right">
                     <!-- <Breadcrumb :cat="cat" /> -->
                     <Content class="layout-body-right-content">
                         <router-view />
                     </Content>
-                </Layout>
-            </Layout>
-        </Layout>
+                </a-layout>
+            </a-layout>
+        </a-layout>
     </div>
 </template>
 
